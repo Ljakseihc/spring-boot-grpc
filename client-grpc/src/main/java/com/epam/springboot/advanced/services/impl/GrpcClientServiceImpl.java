@@ -19,7 +19,7 @@ public class GrpcClientServiceImpl implements GrpcClientService {
 
 
     @Override
-    public String sendPing(String message) {
+    public String sendPing() {
         PingRequest request = PingRequest.newBuilder()
                 .setName("Ping")
                 .build();

@@ -2,7 +2,6 @@ package com.epam.springboot.advanced.controllers;
 
 import com.epam.springboot.advanced.services.GrpcClientService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
@@ -16,7 +15,7 @@ public class GrpcClientController {
     }
 
     @GetMapping("/ping")
-    public Mono<String> ping(@RequestParam(defaultValue = "Ping") String message) {
-        return Mono.fromCallable(() -> grpcClientService.sendPing(message));
+    public Mono<String> ping() {
+        return Mono.fromCallable(grpcClientService::sendPing);
     }
 }
