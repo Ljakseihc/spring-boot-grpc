@@ -6,9 +6,8 @@ import org.springframework.grpc.sample.proto.PingPongServiceGrpc;
 import org.springframework.grpc.sample.proto.PingRequest;
 import org.springframework.grpc.sample.proto.PongReply;
 import org.springframework.grpc.server.service.GrpcService;
-import org.springframework.stereotype.Service;
 
-@Service
+@GrpcService
 public class GrpcClientServiceImpl implements GrpcClientService {
 
     private final PingPongServiceGrpc.PingPongServiceBlockingStub stub;
