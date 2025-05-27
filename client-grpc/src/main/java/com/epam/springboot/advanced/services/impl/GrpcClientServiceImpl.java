@@ -4,7 +4,6 @@ import com.epam.springboot.advanced.services.GrpcClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.grpc.sample.proto.PingPongServiceGrpc;
 import org.springframework.grpc.sample.proto.PingRequest;
-import org.springframework.grpc.sample.proto.PongReply;
 import org.springframework.grpc.server.service.GrpcService;
 
 @GrpcService
@@ -20,11 +19,9 @@ public class GrpcClientServiceImpl implements GrpcClientService {
 
     @Override
     public String sendPing() {
-        PingRequest request = PingRequest.newBuilder()
+        return stub.sayPong(PingRequest.newBuilder()
                 .setName("Ping")
-                .build();
-
-        PongReply response = stub.sayPong(request);
-        return response.getMessage();
+                .build())
+                .getMessage();
     }
 }
